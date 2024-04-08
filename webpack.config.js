@@ -74,10 +74,13 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
- 
-    
-        
-;
 
-  module.exports = Encore.getWebpackConfig();
+    // module.exports = Encore.getWebpackConfig();
+    ;
+
+
+module.exports = Encore.getWebpackConfig();
+
+const config = Encore.getWebpackConfig();
+config.resolve.conditionNames = ['browser', 'svelte', 'import'];
 
