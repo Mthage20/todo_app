@@ -79,8 +79,9 @@ Encore
     ;
 
 
-module.exports = Encore.getWebpackConfig();
+// module.exports = Encore.getWebpackConfig();
 
 const config = Encore.getWebpackConfig();
 config.resolve.conditionNames = ['browser', 'svelte', 'import'];
 
+module.exports = config;
