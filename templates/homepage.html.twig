@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}To-do App{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+<div {{ svelte_component('TodoForm')}}></div>
+{% endblock %}

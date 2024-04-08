@@ -6,15 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Task;
 
 class TaskController extends AbstractController
 {
-    #[Route('/task', name: 'app_task')]
-    public function index(): JsonResponse
-    {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/TaskController.php',
-        ]);
+    #[Route('/', name: 'homepage')]
+    public function index(): Response
+    {   
+       return $this->render('homepage.html.twig');
     }
 }

@@ -11,4 +11,4 @@ import './bootstrap.js';
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 
-registerSvelteControllerComponents(require.context('./svelte', true, /\.svelte$/));
+registerSvelteControllerComponents(require.context('./svelte/controllers', true, /\.svelte$/));
