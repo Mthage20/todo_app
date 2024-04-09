@@ -1,10 +1,11 @@
 <script>
-let title;
-let description;
+
+  let title = '';
+  let description = '';
 </script>
 
-<form>
-  <input type="text" placeholder="title" bind:value={title}>
-  <input type="text" placeholder="description" bind:value={description}>
-  <button>Add To-do</button>
+<form action="create_task" method="post">
+  <input name="title" type="text" placeholder="title" bind:value={title} />
+  <input type="text" placeholder="description" bind:value={description} />
+  <button type="submit">Add To-do</button>
 </form>

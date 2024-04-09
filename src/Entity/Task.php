@@ -14,7 +14,7 @@ class Task
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(length: 100)]
     private ?string $title = null;
@@ -23,7 +23,7 @@ class Task
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?bool $isCompleted = null;
+    private bool $isCompleted = false;
 
     public function getId(): ?int
     {
