@@ -9,19 +9,37 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Task;
+use App\Controller;
+use DateTimeImmutable; 
 
 class TaskController extends AbstractController
 {
     #[Route('/', name: 'to-do')]
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {   
-       return $this->render('index.html.twig');
+      $todos = $doctrine->getRepository(Task::class)->findAll();
+      return $this->render('index.html.twig', ['todos'=>$todos]);
     }
 
     #[Route('/create', name: 'create_task', methods: ['POST'])]
-    public function create()
-    {   
-       exit("to do>: create a new task!");
+    public function create(Request $request, ManagerRegistry $doctrine) : Response
+    {  
+      $title = trim($request->request->get('title'));
+      if(empty($title))
+      return $this->redirectToRoute('to-do');
+      
+      $description = trim($request->request->get('description'));
+
+      $entityManager = $doctrine->getManager();
+
+      $task = new Task;
+      $task -> setTitle($title);
+      $task -> setDescription($description);
+      $task -> setCreatedAt(new DateTimeImmutable());
+      $entityManager->persist($task);
+      $entityManager->flush();
+
+      return $this->redirectToRoute('to-do');
     }
 
     

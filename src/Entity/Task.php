@@ -38,7 +38,6 @@ class Task
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 
@@ -77,4 +76,5 @@ class Task
 
         return $this;
     }
+    
 }
