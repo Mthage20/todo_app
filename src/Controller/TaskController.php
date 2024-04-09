@@ -16,9 +16,21 @@ class TaskController extends AbstractController
 {
     #[Route('/', name: 'to-do')]
     public function index(ManagerRegistry $doctrine): Response
-    {   
-      $todos = $doctrine->getRepository(Task::class)->findAll();
-      return $this->render('index.html.twig', ['todos'=>$todos]);
+    { $todos = $doctrine->getRepository(Task::class)->findBy([],
+    ['id'=>'DESC']);
+    
+      // Converting Task entities to arrays (so they can actually be shown by the svelte component)
+      $todosArray = [];
+      foreach ($todos as $todo) {
+          $todosArray[] = [
+              'id' => $todo->getId(),
+              'title' => $todo->getTitle(),
+              'description' => $todo->getDescription(),
+              'createdAt' => $todo->getCreatedAt()->format('d-m-Y H:i:s'), 
+              'status' => $todo->isCompleted(),
+          ];
+      }
+      return $this->render('index.html.twig', ['todos' => $todosArray]);
     }
 
     #[Route('/create', name: 'create_task', methods: ['POST'])]
@@ -44,15 +56,24 @@ class TaskController extends AbstractController
 
     
     #[Route('/changeStatus/{id}', name: 'change_status')]
-    public function changeStatus($id)
+    public function changeStatus($id,  ManagerRegistry $doctrine)
     {
-      exit("to do>: switch status of the task! $id!");
+      $entityManager = $doctrine->getManager();
+    $task = $entityManager->getRepository(Task::class)->find($id);
+
+    $task->setCompleted(!$task->isCompleted());
+    $entityManager->flush();
+      return $this->redirectToRoute('to-do');
     }
 
     #[Route('/delete/{id}', name: 'task_delete')]
-    public function delete($id)
+    public function delete($id, ManagerRegistry $doctrine)
     {
-      exit("todo: delete a task with the id of $id!");
+      $entityManager = $doctrine->getManager();
+      $task = $entityManager->getRepository(Task::class)->find($id);
+      $entityManager -> remove($task);
+      $entityManager -> flush();
+      return $this->redirectToRoute('to-do');
     }
 
 }
