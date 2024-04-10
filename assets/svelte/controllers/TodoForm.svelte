@@ -1,5 +1,3 @@
-<!-- TodoForm.svelte -->
-
 <script>
   let title = '';
   let description = '';
@@ -11,13 +9,13 @@
   }
 
   .todo-form input[type="text"] {
-    width: calc(100% - 20px); /* Adjust width */
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    font-size: 14px; /* Adjust font size */
+    font-size: 14px; 
   }
 
   .todo-form button[type="submit"] {
@@ -28,7 +26,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 14px; /* Adjust font size */
+    font-size: 14px; 
   }
 
   .todo-form button[type="submit"]:hover {
