@@ -19,20 +19,35 @@ class TaskController extends AbstractController
     public function index(TaskRepository $taskRepository): Response
     { $todos = $taskRepository->findBy([],
     ['id'=>'DESC']);
-    
-      // Converting Task entities to arrays (so they can actually be shown by the svelte component)
-      $todosArray = [];
+     
+      // Separate incomplete and completed tasks
+      $incompleteTodos = [];
+      $completedTodos = [];
       foreach ($todos as $todo) {
+          if ($todo->isCompleted()) {
+              $completedTodos[] = $todo;
+          } else {
+              $incompleteTodos[] = $todo;
+          }
+      }
+  
+      // Combine incomplete and completed tasks, keeping completed tasks at the bottom
+      $sortedTodos = array_merge($incompleteTodos, $completedTodos);
+  
+      // Converting Task entities to arrays
+      $todosArray = [];
+      foreach ($sortedTodos as $todo) {
           $todosArray[] = [
               'id' => $todo->getId(),
               'title' => $todo->getTitle(),
               'description' => $todo->getDescription(),
-              'createdAt' => $todo->getCreatedAt()->format('d-m-Y H:i:s'), 
+              'createdAt' => $todo->getCreatedAt()->format('d-m-Y H:i:s'),
               'status' => $todo->isCompleted(),
           ];
       }
+  
       return $this->render('index.html.twig', ['todos' => $todosArray]);
-    }
+  } 
 
     #[Route('/create', name: 'create_task', methods: ['POST'])]
     public function create(Request $request, ManagerRegistry $doctrine) : Response
