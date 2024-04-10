@@ -1,45 +1,42 @@
-/* Add styles to make the site look more vibrant and lively */
-
 /* Body styles */
 body {
-    font-family: 'Roboto', sans-serif; /* Use Roboto font */
-    background-color: #f4f4f4; /* Use light gray background */
-    color: #333; /* Use dark text color */
-  }
-  
-  /* Container styles */
-  .container {
-    max-width: 800px; /* Limit container width */
-    margin: 0 auto; /* Center container horizontally */
-    padding: 20px; /* Add padding */
-    background-color: #fff; /* Use white background */
-    border-radius: 10px; /* Add border radius */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow effect */
-  }
-  
-  /* Header styles */
-  .header {
-    text-align: center; /* Center align header text */
-    margin-bottom: 20px; /* Add space below header */
-  }
-  
-  .header h1 {
-    font-size: 24px; /* Increase header font size */
-    color: #ff7e67; /* Use vibrant text color */
-  }
-  
-  /* Content styles */
-  .content {
-    padding: 20px; /* Add padding */
-  }
-  
-  /* Link styles */
-  a {
-    color: #007bff; /* Use vibrant link color */
-    text-decoration: none; /* Remove underline from links */
-  }
-  
-  a:hover {
-    text-decoration: underline; /* Add underline on hover */
-  }
-  
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Container styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #ff7e67;
+}
+
+/* Content styles */
+.content {
+  padding: 20px;
+}
+
+/* Link styles */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

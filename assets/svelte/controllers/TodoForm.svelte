@@ -1,9 +1,22 @@
 <!-- TodoForm.svelte -->
 
 <script>
-  let title = '';
-  let description = '';
+  let title = "";
+  let description = "";
 </script>
+
+<div class="todo-form">
+  <form action="/create_task" method="post">
+    <input name="title" type="text" placeholder="Title" bind:value={title} />
+    <input
+      name="description"
+      type="text"
+      placeholder="Description"
+      bind:value={description}
+    />
+    <button type="submit">Add To-do</button>
+  </form>
+</div>
 
 <style>
   .todo-form {
@@ -35,11 +48,3 @@
     background-color: #0056b3;
   }
 </style>
-
-<div class="todo-form">
-  <form action="/create_task" method="post">
-    <input name="title" type="text" placeholder="Title" bind:value={title} />
-    <input name="description" type="text" placeholder="Description" bind:value={description} />
-    <button type="submit">Add To-do</button>
-  </form>
-</div>

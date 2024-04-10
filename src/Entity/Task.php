@@ -4,10 +4,22 @@ namespace App\Entity;
 
 use App\Repository\TaskRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
-class Task
+class Task implements JsonSerializable
 {
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'createdAt' => $this->createdAt->format('d-m-Y H:i:s'),
+            'status' => $this->isCompleted,
+        ];
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -16,6 +28,7 @@ class Task
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt;
 
+    
     #[ORM\Column(length: 100)]
     private ?string $title = null;
 
