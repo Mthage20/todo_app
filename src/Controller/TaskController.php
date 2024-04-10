@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -14,12 +15,11 @@ use DateTimeImmutable;
 
 class TaskController extends AbstractController
 {
-  #[Route('/', name: 'to-do')]
-  public function index(ManagerRegistry $doctrine): Response
-  {
-      // Fetch all tasks from the database, sorted by ID in descending order
-      $todos = $doctrine->getRepository(Task::class)->findBy([], ['id' => 'DESC']);
-  
+    #[Route('/', name: 'to-do')]
+    public function index(TaskRepository $taskRepository): Response
+    { $todos = $taskRepository->findBy([],
+    ['id'=>'DESC']);
+     
       // Separate incomplete and completed tasks
       $incompleteTodos = [];
       $completedTodos = [];
@@ -46,7 +46,6 @@ class TaskController extends AbstractController
           ];
       }
   
-      // Render the template with the sorted tasks
       return $this->render('index.html.twig', ['todos' => $todosArray]);
   } 
 
