@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,8 +16,8 @@ use DateTimeImmutable;
 class TaskController extends AbstractController
 {
     #[Route('/', name: 'to-do')]
-    public function index(ManagerRegistry $doctrine): Response
-    { $todos = $doctrine->getRepository(Task::class)->findBy([],
+    public function index(TaskRepository $taskRepository): Response
+    { $todos = $taskRepository->findBy([],
     ['id'=>'DESC']);
     
       // Converting Task entities to arrays (so they can actually be shown by the svelte component)
