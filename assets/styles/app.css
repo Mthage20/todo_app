@@ -1,16 +1,9 @@
-/* Body styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-}
-
 /* Container styles */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #f8f9fa; 
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -23,20 +16,119 @@ body {
 
 .header h1 {
   font-size: 24px;
-  color: #ff7e67;
+  color: #333; 
 }
 
-/* Content styles */
-.content {
+/* Footer styles */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer p {
+  color: #666; 
+}
+
+/* Todo form styles */
+.todo-form {
+  margin-bottom: 20px;
+}
+
+.todo-form input[type="text"],
+.todo-form textarea {
+  width: calc(100% - 20px); 
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da; 
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px; 
+}
+
+.todo-form button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #28a745; 
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px; 
+}
+
+.todo-form button[type="submit"]:hover {
+  background-color: #218838; 
+}
+
+/* Todo list styles */
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  margin-bottom: 20px;
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff; 
+  transition: transform 0.3s ease;
 }
 
-/* Link styles */
-a {
-  color: #007bff;
+.todo-item.completed {
+  background-color: #ffc107; 
+}
+
+.todo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.todo-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; 
+  margin-bottom: 5px;
+}
+
+.todo-description {
+  font-size: 16px;
+  color: #666; 
+  margin-bottom: 10px;
+}
+
+.todo-timestamp {
+  font-size: 14px;
+  color: #999; 
+}
+
+.todo-buttons {
+  margin-top: 10px;
+}
+
+.todo-buttons a {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  background-color: #007bff; 
+  color: #fff; 
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-a:hover {
-  text-decoration: underline;
+.todo-buttons a:hover {
+  background-color: #0056b3; 
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 100%; 
+    border-radius: 0; 
+  }
+
+  .todo-form input[type="text"],
+  .todo-form textarea {
+    width: 100%; 
+  }
 }
