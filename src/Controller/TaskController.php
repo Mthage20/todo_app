@@ -16,10 +16,8 @@ class TaskController extends AbstractController
     public function index(TaskRepository $taskRepository): Response
     {
         $todos = $taskRepository->findBy([], ['isCompleted' => 'ASC', 'id' => 'DESC']);
-
-        $todosArray = array_map(fn($todo) => $todo->jsonSerialize(), $todos);
-
-        return $this->render('index.html.twig', ['todos' => $todosArray]);
+        
+        return $this->render('index.html.twig', ['todos' => $todos]);
     }
 
     #[Route('/create', name: 'create_task', methods: ['POST'])]
