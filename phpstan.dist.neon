@@ -1,8 +1,8 @@
 parameters:
+    checkGenericClassInNonGenericObjectType: false
     level: 6
     paths:
         - bin/
         - config/
         - public/
         - src/
-        - tests/

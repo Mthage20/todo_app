@@ -9,7 +9,8 @@ use JsonSerializable;
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 class Task implements JsonSerializable
 {
-    public function jsonSerialize()
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize(): mixed
     {
         return [
             'id' => $this->id,
@@ -28,7 +29,7 @@ class Task implements JsonSerializable
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt;
 
-    
+
     #[ORM\Column(length: 100)]
     private ?string $title = null;
 
@@ -89,5 +90,5 @@ class Task implements JsonSerializable
 
         return $this;
     }
-    
+
 }

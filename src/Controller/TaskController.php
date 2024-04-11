@@ -17,12 +17,8 @@ class TaskController extends AbstractController
     {
         $todos = $taskRepository->findBy([], ['isCompleted' => 'ASC', 'id' => 'DESC']);
 
-        // Convert Task entities to arrays
-        $todosArray = [];
-        foreach ($todos as $todo) {
-            $todoData = $todo->jsonSerialize();
-            $todosArray[] = $todoData;
-        }
+        $todosArray = array_map(fn($todo) => $todo->jsonSerialize(), $todos);
+
         return $this->render('index.html.twig', ['todos' => $todosArray]);
     }
 
@@ -36,13 +32,11 @@ class TaskController extends AbstractController
 
         $description = trim($request->request->get('description'));
 
-        // Create a new Task entity with provided title, description, and current timestamp
         $task = new Task();
         $task->setTitle($title);
         $task->setDescription($description);
         $task->setCreatedAt(new \DateTimeImmutable());
 
-        // Persist the new task to the database
         $entityManager = $doctrine->getManager();
         $entityManager->persist($task);
         $entityManager->flush();
@@ -51,11 +45,11 @@ class TaskController extends AbstractController
     }
 
     #[Route('/changeStatus/{id}', name: 'change_status')]
-    public function changeStatus($id, TaskRepository $taskRepository, ManagerRegistry $doctrine): Response
+    public function changeStatus(int $id, TaskRepository $taskRepository, ManagerRegistry $doctrine): Response
     {
         $task = $taskRepository->find($id);
 
-        if ($task) {
+        if ($task !== null) {
             $task->setCompleted(!$task->isCompleted());
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
@@ -69,7 +63,7 @@ class TaskController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
 
-        if ($task) {
+        if ($task !== null) {
             $entityManager->remove($task);
             $entityManager->flush();
         }

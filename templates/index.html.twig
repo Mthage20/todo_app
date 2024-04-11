@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-  <div class="header">
-    <h1 class="display-4">Todo App</h1>
-  </div>
+	<div class="container">
+		<div class="header">
+			<h1 class="display-4">📝 My Awesome Todo App 🚀</h1>
+		</div>
 
-  <div class="row">
-    <div class="col-md-8 mx-auto">
-      <div {{ svelte_component('TodoForm') }}></div>
-      <hr>
-      <div {{ svelte_component('TodoList', {todos: todos}) }}></div>
-    </div>
-  </div>
+		<div class="row">
+			<div class="col-md-8 mx-auto">
+				<div {{ svelte_component('TodoForm') }}></div>
+				<hr>
+				<div {{ svelte_component('TodoList', {todos: todos} ) }}></div>
+			</div>
+		</div>
 
-  <div class="footer mt-5">
-    <p class="text-muted">© 2024 Todo App. All rights reserved.</p>
-  </div>
-</div>
+		<div class="footer mt-5">
+			<p class="text-muted">© 2024 My Awesome Todo App. All rights reserved. 😉</p>
+		</div>
+	</div>
 {% endblock %}

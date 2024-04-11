@@ -3,30 +3,25 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Header styles */
-.header {
+/* Header and footer styles */
+.header,
+.footer {
   text-align: center;
   margin-bottom: 20px;
 }
 
 .header h1 {
   font-size: 24px;
-  color: #333; 
-}
-
-/* Footer styles */
-.footer {
-  text-align: center;
-  margin-top: 20px;
+  color: #333;
 }
 
 .footer p {
-  color: #666; 
+  color: #666;
 }
 
 /* Todo form styles */
@@ -36,28 +31,28 @@
 
 .todo-form input[type="text"],
 .todo-form textarea {
-  width: calc(100% - 20px); 
+  width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ced4da; 
+  border: 1px solid #ced4da;
   border-radius: 5px;
   box-sizing: border-box;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 .todo-form button[type="submit"] {
   padding: 10px 20px;
-  background-color: #28a745; 
+  background-color: #28a745;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 .todo-form button[type="submit"]:hover {
-  background-color: #218838; 
+  background-color: #218838;
 }
 
 /* Todo list styles */
@@ -71,12 +66,12 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff; 
+  background-color: #fff;
   transition: transform 0.3s ease;
 }
 
 .todo-item.completed {
-  background-color: #ffc107; 
+  background-color: #ffc107;
 }
 
 .todo-item:hover {
@@ -87,19 +82,19 @@
 .todo-title {
   font-size: 18px;
   font-weight: bold;
-  color: #333; 
+  color: #333;
   margin-bottom: 5px;
 }
 
 .todo-description {
   font-size: 16px;
-  color: #666; 
+  color: #666;
   margin-bottom: 10px;
 }
 
 .todo-timestamp {
   font-size: 14px;
-  color: #999; 
+  color: #999;
 }
 
 .todo-buttons {
@@ -110,25 +105,25 @@
   margin-right: 10px;
   padding: 8px 12px;
   border-radius: 5px;
-  background-color: #007bff; 
-  color: #fff; 
+  background-color: #007bff;
+  color: #fff;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .todo-buttons a:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
   .container {
-    max-width: 100%; 
-    border-radius: 0; 
+    max-width: 100%;
+    border-radius: 0;
   }
 
   .todo-form input[type="text"],
   .todo-form textarea {
-    width: 100%; 
+    width: 100%;
   }
 }
